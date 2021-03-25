@@ -11,159 +11,163 @@
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 </head>
 
-<body>
+<body class="min-vh-100">
     <!--.container-fluid>.row>.col-4+.col-8-->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-4">
+    <div class="container-fluid min-vh-100 ">
+        <div class="d-flex flex-row">
+            <div class=" bg-success col-3">
 
-                <!--.container.row>(.col-4>.nav.flex-column.bg-dark)+.col-8-->
+                <!--.container-fluid.row>(.col-4>.nav.flex-column.bg-dark)+.col-8-->
+                <div class="container-fluid pe-0">
+                    <div class="d-flex flex-row min-vh-100 ">
+                        <div class="col-2 bg-dark rounded-pill ">
 
-                <div class="row">
-                    <div class="col-4 ">
-                        <div class="nav flex-column bg-dark">l
                             <!--(div>a.nav-link[href=#])*4-->
-
-                            <div>
+                            <div class="pt-2 px-1">
                                 <a href="#" class="nav-link">
                                     <img src="./assets/images/M.png" alt="Menu">
                                 </a>
                             </div>
-                            <div>
+                            <div class="pt-5 px-1">
                                 <a href="#" class="nav-link">
                                     <img src="./assets/images/bubble.png" alt="Chat with people">
                                 </a>
                             </div>
-                            <div>
+                            <div class="pt-2 px-1">
                                 <a href="#" class="nav-link">
                                     <img src="./assets/images/people.png" alt="Go to groups">
                                 </a>
                             </div>
-                            <div>
+                            <div class="position-absolute bottom-0 pb-2 px-1">
                                 <a href="#" class="nav-link ">
                                     <img src="./assets/images/moon.png" alt="Moon">
                                 </a>
                             </div>
-
-
-                        </div>
-                    </div>
-                    <div class="col-8">
-
-                        <!--.row>(.col-auto>p.fw-folder{Messages})+.col-auto-->
-                        <div class="row">
-                            <div class="col-auto">
-                                <p class="fw-bolder">Messages</p>
-                            </div>
-
-                            <div class="col-auto">
-                                <img src="./assets/images/circle.png" alt="Notifications">
-
-                            </div>
                         </div>
 
+                        <div class="col-10">
+                            <!--.row>(.col-auto>p.fw-folder{Messages})+.col-auto-->
+                            <nav class="nav ps-3 pt-2">
+                                <div class="col-auto">
+                                    <p class="fw-bolder">Messages</p>
+                                </div>
 
+                                <div class="col-auto ps-1">
+                                    <img src="./assets/images/circle.png" alt="Notifications">
 
-                        <!--nav.nav>a.nav-link.fw-bolder.text-decoration-underline.text-dark[href=#]{Recent}+a.nav-link.fw-bolder.text-dark[href=#]{Pinned}-->
-                        <nav class="nav">
-                            <a href="#" class="nav-link fw-bolder text-decoration-underline text-dark">Recent</a>
-                            <a href="#" class="nav-link fw-bolder text-dark">Pinned</a>
-                        </nav>
+                                </div>
+                            </nav>
+                            <!--nav.nav>a.nav-link.fw-bolder.text-decoration-underline.text-dark[href=#]{Recent}+a.nav-link.fw-bolder.text-dark[href=#]{Pinned}-->
+                            <nav class="nav pb-2">
+                                <a href="#" class="nav-link fw-bolder text-decoration-underline text-dark">Recent</a>
+                                <a href="#" class="nav-link fw-bolder text-dark">Pinned</a>
+                            </nav>
 
-                        <!--.row.bg-secondary>.col-2+.col-10>div>div>strong.mr-auto{Artur Towish}+small{1h ago}^div{Some sample message}-->
-
-                        <div class="row bg-secondary">
-                            <div class="col-2">
-                                <img src="./assets/images/profile_pic.png" alt="Profile picture">
-                            </div>
-                            <div class="col-10">
-                                <div>
-                                    <div><strong class="mr-auto">Artur Towish</strong><small>1h ago</small></div>
-                                    <div>Some sample message</div>
+                            <!--.row.bg-secondary>.col-2+.col-10>div>div>strong.mr-auto{Artur Towish}+small{1h ago}^div{Some sample message}-->
+                            <div class="pb-2 position-relative">
+                                <div class="d-flex flex-row bg-secondary">
+                                    <div class="col-2 position-relative">
+                                        <img class="position-absolute top-50 start-50 translate-middle"
+                                            src="./assets/images/profile_pic.png" alt="Profile picture">
+                                    </div>
+                                    <div class="col-10">
+                                        <div>
+                                            <div>
+                                                <strong class="mr-auto">Artur Towish</strong>
+                                                <small class="position-absolute end-0">1h ago</small>
+                                            </div>
+                                            <div>Some sample message</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!--.row.bg-secondary>.col-2+.col-10>div>div>strong.mr-auto{Nix Golddigger}+small{2h ago}^div{Second sample message}-->
-                        <div class="row bg-secondary">
-                            <div class="col-2">
-                                <img src="./assets/images/profile_pic.png" alt="Profile picture">
-                            </div>
-                            <div class="col-10">
-                                <div>
-                                    <div><strong class="mr-auto">Nix Golddigger</strong><small>2h ago</small></div>
-                                    <div>Second sample message</div>
+                            <!--.row.bg-secondary>.col-2+.col-10>div>div>strong.mr-auto{Nix Golddigger}+small{2h ago}^div{Second sample message}-->
+                            <div class="pb-2 position-relative">
+                                <div class="d-flex flex-row bg-secondary">
+                                    <div class="col-2 position-relative">
+                                        <img class="position-absolute top-50 start-50 translate-middle"
+                                            src="./assets/images/profile_pic.png" alt="Profile picture">
+                                    </div>
+                                    <div class="col-10">
+                                        <div>
+                                            <div><strong class="mr-auto">Nix Golddigger</strong>
+                                                <small class="position-absolute end-0">2h ago</small>
+                                            </div>
+                                            <div>Second sample message</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-8">
+            <div class="col-9 min-vh-100 position-relative">
                 <!--nav.navbar.navbar-light.bg-secondary>form.d-flex>input.form-control.me-2+span.input-group-text"-->
-                <nav class="navbar navbar-light bg-secondary">
-                    <form class="d-flex"><input type="text" class="form-control me-2">
-                        <img class="input-group-text" src="./assets/images/search.png" alt="Search">
-                    </form>
+                <nav class="navbar navbar-light bg-success">
+                    <div class="col-6 ">
+                        <div class="input-group">
+                            <input type="text" class="form-control rounded-pill input-sm">
+                            <img class="input-group-text" src="./assets/images/search.png" alt="Search">
+                        </div>
+                    </div>
                 </nav>
 
                 <!--.row>.col-1+.col-4+.col-4+.col-1-->
-                <div class="row">
+                <div class="d-flex flex-row position-relative h-75">
                     <div class="col-1">
-
-                        <img src="./assets/images/profile_pic.png" alt="Profile picture">
+                        <img class="position-absolute bottom-0 ps-5" src="./assets/images/profile_pic.png"
+                            alt="Profile picture">
                     </div>
-
 
                     <div class="col-4">
                         <!-- (.card.bg-secondary>.card-body)*3-->
-                        <div class="card bg-secondary">
-                            <div class="card-body"></div>
+                        <div class="position-absolute bottom-0 col-4">
+                            <div class="card bg-secondary">
+                                <div class="card-body"></div>
+                            </div>
+                            <div class="card bg-secondary">
+                                <div class="card-body"></div>
+                            </div>
+                            <div class="card bg-secondary">
+                                <div class="card-body"></div>
+                            </div>
                         </div>
-                        <div class="card bg-secondary">
-                            <div class="card-body"></div>
-                        </div>
-                        <div class="card bg-secondary">
-                            <div class="card-body"></div>
-                        </div>
-
                     </div>
                     <!-- (.card.bg-secondary>.card-body)*3-->
                     <div class="col-4 offset-md-2">
-                        <div class="card bg-secondary">
-                            <div class="card-body"></div>
+                        <div class="position-absolute bottom-50 col-4">
+                            <div class="card bg-secondary">
+                                <div class="card-body"></div>
+                            </div>
+                            <div class="card bg-secondary">
+                                <div class="card-body"></div>
+                            </div>
+                            <div class="card bg-secondary">
+                                <div class="card-body"></div>
+                            </div>
                         </div>
-                        <div class="card bg-secondary">
-                            <div class="card-body"></div>
-                        </div>
-                        <div class="card bg-secondary">
-                            <div class="card-body"></div>
-                        </div>
-
                     </div>
+
                     <div class="col-1">
-                        <img src="./assets/images/profile_pic.png" alt="Profile picture">
+                        <img class="position-absolute bottom-50 ps-3" src="./assets/images/profile_pic.png"
+                            alt="Profile picture">
                     </div>
                 </div>
 
-                <!--.input-group.mb-3>input.form-control.boder-dark+span.input-group-text-->
-                <div class="input-group">
+                <!--.input-group>input.form-control.boder-dark+span.input-group-text-->
+                <div class="input-group position-absolute bottom-0 p-2">
 
-                    <input type="text" class="form-control border-dark">
-
+                    <input type="text" placeholder="Type your message" class="form-control border-dark">
                     <img class="input-group-text" src="./assets/images/send.png" alt="Send a message">
+                    <div class="p-1"><img class="" src="./assets/images/attachment.png" alt="Choose a file"></div>
+                    <div class="p-1"><img class="" src="./assets/images/photo.png" alt="Choose a photo"></div>
 
-
-                    <img class="input-group-addon" src="./assets/images/attachment.png" alt="Choose a file">
-
-                    <img class="input-group-addon" src="./assets/images/photo.png" alt="Choose a photo">
                 </div>
-
             </div>
         </div>
     </div>
-
 </body>
 
 </html>
