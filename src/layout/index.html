@@ -49,7 +49,7 @@
                             <!--.row>(.col-auto>p.fw-folder{Messages})+.col-auto-->
                             <nav class="nav ps-3 pt-2">
                                 <div class="col-auto">
-                                    <p class="fw-bolder">Messages</p>
+                                    <span class="fw-bolder">Messages</span>
                                 </div>
 
                                 <div class="col-auto ps-1">
@@ -107,10 +107,10 @@
                 <!--nav.navbar.navbar-light.bg-secondary>form.d-flex>input.form-control.me-2+span.input-group-text"-->
                 <nav class="navbar navbar-light bg-success">
                     <div class="col-6 ">
-                        <div class="input-group">
+                        <form class="input-group">
                             <input type="text" class="form-control rounded-pill input-sm">
                             <img class="input-group-text" src="./assets/images/search.png" alt="Search">
-                        </div>
+                        </form>
                     </div>
                 </nav>
 
@@ -156,15 +156,13 @@
                     </div>
                 </div>
 
-                <!--.input-group>input.form-control.boder-dark+span.input-group-text-->
-                <div class="input-group position-absolute bottom-0 p-2">
-
+                <!--form.input-group>input.form-control.boder-dark+span.input-group-text-->
+                <form class="input-group position-absolute bottom-0 p-2">
                     <input type="text" placeholder="Type your message" class="form-control border-dark">
                     <img class="input-group-text" src="./assets/images/send.png" alt="Send a message">
                     <div class="p-1"><img class="" src="./assets/images/attachment.png" alt="Choose a file"></div>
                     <div class="p-1"><img class="" src="./assets/images/photo.png" alt="Choose a photo"></div>
-
-                </div>
+                </form>
             </div>
         </div>
     </div>
