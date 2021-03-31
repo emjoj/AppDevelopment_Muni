@@ -1,0 +1,32 @@
+@startuml
+
+' hide the spot
+hide circle
+ 
+' avoid problems with angled crows feet
+skinparam linetype ortho
+
+entity User{
+    *id : serial
+    *firstName : varchar
+    *LastName : varchar
+}
+
+entity Conversation{
+    *id : serial
+    *idParticipant1 : serial
+    *idParticipant2 : serial
+    *status : varchar
+}
+
+entity Message{
+    *id : serial
+    *idConversation: serial
+    *idSender: serial
+    *content: varchar
+}
+
+User}|..o{Conversation
+Conversation||..o{Message
+
+@enduml
