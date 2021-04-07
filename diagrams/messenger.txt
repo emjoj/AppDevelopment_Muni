@@ -6,27 +6,55 @@ hide circle
 ' avoid problems with angled crows feet
 skinparam linetype ortho
 
+
+entity Contact{
+    *idUser1 : serial
+    *idUser2 : serial
+    *state : varchar
+
+}
+
 entity User{
     *id : serial
     *firstName : varchar
     *LastName : varchar
 }
 
+
+
 entity Conversation{
     *id : serial
     *idParticipant1 : serial
     *idParticipant2 : serial
-    *status : varchar
+    *isActive : boolean
 }
 
 entity Message{
     *id : serial
     *idConversation: serial
     *idSender: serial
-    *content: varchar
+    *timestamp : date
+    *text: varchar
 }
 
-User}|..o{Conversation
+entity Photo{
+    *id : serial
+    *name : varchar
+    *size : bigint
+}
+
+entity File{
+    *id : serial
+    *name : varchar
+    *size : bigint
+}
+
+User||..{Conversation
+Conversation||..{User
+User||..{Contact : has
+Contact||..{User : of
 Conversation||..o{Message
+Message||..{Photo
+Message||..{File
 
 @enduml

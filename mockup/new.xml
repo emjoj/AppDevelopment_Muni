@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<conversations>
+    <conversation participant="Alex Kral" isActive="True">
+<message type="sent" timestamp="1h">hi
+        </message>
+        <message type="sent" timestamp="3h">hi
+        </message>
+        <message type="sent" timestamp="2h">hi
+        </message>
+        <message type="received" timestamp="1h">hey
+        </message>
+        <message type="sent" timestamp="1h">hi
+        </message>
+        <message type="sent" timestamp="1h">hi
+        </message>
+        <message type="sent" timestamp="1h">hi
+        </message>
+        <message type="received" timestamp="1h">hey
+        </message>
+        <message type="received" timestamp="1h">good
+        </message>
+        <message type="sent" timestamp="1h">you
+        </message>
+ <message type="received" timestamp="1h">you
+        </message>
+        <message type="received" timestamp="1h">hey
+        </message>
+        <message type="sent" timestamp="1h">good
+        </message>
+        <message type="received" timestamp="1h">you
+        </message>
+        <message type="received" timestamp="1h">hey
+        </message>
+        <message type="received" timestamp="1h">good
+        </message>
+        <message type="sent" timestamp="1h">you
+        </message>
+        <message type="received" timestamp="1h">hey
+        </message>
+        <message type="received" timestamp="1h">good
+        </message>
+        <message type="received" timestamp="2h">youssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+        </message>
+    </conversation>
+    <conversation participant="Mike Smith" isActive="False">
+        <message type="sent" timestamp="4h">hi
+        </message>
+        <message type="sent" timestamp="4h">hi
+        </message>
+        <message type="sent" timestamp="4h">hi
+        </message>
+        <message type="received" timestamp="4h">hey
+        </message>
+        <message type="received" timestamp="4h">good 
+        </message>
+        <message type="received " timestamp="4h">you kksskksncknkalkcnalknc
+        </message>
+    </conversation>
+    <conversation participant="Luke Robert" isActive="False">
+        <message type="sent" timestamp="12h">hi
+        </message>
+        <message type="sent" timestamp="12h">hi
+        </message>
+        <message type="sent" timestamp="12h">hi
+        </message>
+        <message type="received" timestamp="12h">hey
+        </message>
+        <message type="received" timestamp="12h">good
+        </message>
+        <message type="received" timestamp="12h">you
+        </message>
+    </conversation>
+<conversation participant="Mike Smith" isActive="False">
+        <message type="sent" timestamp="1d">hi
+        </message>
+        <message type="sent" timestamp="1d">hi
+        </message>
+        <message type="sent" timestamp="1d">hi
+        </message>
+        <message type="received" timestamp="1d">hey
+        </message>
+        <message type="received" timestamp="1d">good 
+        </message>
+        <message type="received" timestamp="1d">you kksskksncknkalkcnalknc
+        </message>
+    </conversation>
+    <conversation participant="Luke Robert" isActive="False">
+        <message type="received" timestamp="1w">you
+        </message>
+    </conversation>
+
+</conversations>
