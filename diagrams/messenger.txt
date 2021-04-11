@@ -19,16 +19,6 @@ entity User{
     *firstName : varchar
     *LastName : varchar
 }
-
-
-
-entity Conversation{
-    *id : serial
-    *idParticipant1 : serial
-    *idParticipant2 : serial
-    *isActive : boolean
-}
-
 entity Message{
     *id : serial
     *idConversation: serial
@@ -36,6 +26,17 @@ entity Message{
     *timestamp : date
     *text: varchar
 }
+entity Conversation_User{
+    *id : serial
+    *idConversation : serial
+    *idUser : serial
+}
+entity Conversation{
+    *id : serial
+    *isActive : boolean
+}
+
+
 
 entity Photo{
     *id : serial
@@ -49,12 +50,13 @@ entity File{
     *size : bigint
 }
 
-User||..{Conversation
-Conversation||..{User
-User||..{Contact : has
-Contact||..{User : of
-Conversation||..o{Message
+User||..{Conversation_User
+Conversation||..{Conversation_User
+User||..{Contact
+Contact}..||User
+Conversation||..o{Message : has
 Message||..{Photo
 Message||..{File
+User||..o{Message : sends
 
 @enduml

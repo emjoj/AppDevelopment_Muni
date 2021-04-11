@@ -65,6 +65,7 @@
                                         </nav>
 
                                         <!--.row.bg-secondary>.col-2+.col-10>div>div>strong.mr-auto{Nix Golddigger}+small{2h ago}^div{Second sample message}-->
+
                                         <xsl:for-each select="conversation">
                                             <div class="pb-2 position-relative">
                                                 <div class="d-flex flex-row bg-secondary">
@@ -77,7 +78,9 @@
                                                                 <strong class="mr-auto">
                                                                     <xsl:value-of select="@participant" />
                                                                 </strong>
-                                                                <small class="position-absolute end-0">2h ago</small>
+                                                                <small class="position-absolute end-0">
+                                                                    <xsl:value-of select="message[last()]/@timestamp" />
+                                                                </small>
                                                             </div>
                                                             <div>
                                                                 <xsl:value-of select="substring(message[last()]/text(),1,10)" />
@@ -87,6 +90,7 @@
                                                 </div>
                                             </div>
                                         </xsl:for-each>
+
                                     </div>
                                 </div>
                             </div>
@@ -104,46 +108,9 @@
 
                             <!--.row>.col-1+.col-4+.col-4+.col-1-->
                             <div class="d-flex flex-row position-relative min-vh-75 pb-5">
-                                <xsl:for-each select="conversation">
-                                    <xsl:if test="@status = 'active'">
+                                <xsl:apply-templates select="conversation[@isActive='True']" />
 
 
-                                        <div class="col-1">
-                                            <img class="position-absolute bottom-50 ps-5 pb-5" src="../src/layout/assets/images/profile_pic.png" alt="Profile picture" />
-                                        </div>
-                                        <div class="col-10">
-
-                                            <xsl:for-each select="message">
-                                                <xsl:choose>
-                                                    <xsl:when test="@type='received'">
-                                                        <div class="col-4">
-                                                            <div class="card bg-secondary ">
-                                                                <div class="card-body">
-                                                                    <xsl:value-of select="." />
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </xsl:when>
-                                                    <xsl:otherwise>
-                                                        <div class="col-4 offset-md-8">
-                                                            <div class="card bg-secondary ">
-                                                                <div class="card-body">
-                                                                    <xsl:value-of select="." />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </xsl:otherwise>
-                                                </xsl:choose>
-                                            </xsl:for-each>
-                                        </div>
-
-
-                                        <div class="col-1">
-                                            <img class="position-absolute bottom-50 ps-3" src="../src/layout/assets/images/profile_pic.png" alt="Profile picture" />
-                                        </div>
-                                    </xsl:if>
-                                </xsl:for-each>
                             </div>
 
                             <!--form.input-group>input.form-control.boder-dark+span.input-group-text-->
@@ -164,4 +131,47 @@
 
         </html>
     </xsl:template>
+    <xsl:template match="conversation[@isActive='True']">
+        <div class="col-1">
+            <img class="position-absolute bottom-50 ps-5 pb-5" src="../src/layout/assets/images/profile_pic.png" alt="Profile picture" />
+        </div>
+        <div class="col-10">
+
+            <xsl:apply-templates select="message" />
+
+
+        </div>
+
+
+        <div class="col-1">
+            <img class="position-absolute bottom-50 ps-3" src="../src/layout/assets/images/profile_pic.png" alt="Profile picture" />
+        </div>
+    </xsl:template>
+
+    <xsl:template match="message">
+        <xsl:choose>
+            <xsl:when test="@type='received'">
+                <div class="col-4">
+                    <div class="card bg-secondary ">
+                        <div class="card-body">
+                            <xsl:value-of select="." />
+                        </div>
+                    </div>
+
+                </div>
+            </xsl:when>
+            <xsl:otherwise>
+                <div class="col-4 offset-md-8">
+                    <div class="card bg-secondary ">
+                        <div class="card-body">
+                            <xsl:value-of select="." />
+                        </div>
+                    </div>
+                </div>
+            </xsl:otherwise>
+        </xsl:choose>
+
+    </xsl:template>
+
+
 </xsl:stylesheet>
