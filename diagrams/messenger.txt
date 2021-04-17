@@ -1,0 +1,62 @@
+@startuml
+
+' hide the spot
+hide circle
+ 
+' avoid problems with angled crows feet
+skinparam linetype ortho
+
+
+entity Contact{
+    *idUser1 : serial
+    *idUser2 : serial
+    *state : varchar
+
+}
+
+entity User{
+    *id : serial
+    *firstName : varchar
+    *LastName : varchar
+}
+entity Message{
+    *id : serial
+    *idConversation: serial
+    *idSender: serial
+    *timestamp : date
+    *text: varchar
+}
+entity Conversation_User{
+    *id : serial
+    *idConversation : serial
+    *idUser : serial
+}
+entity Conversation{
+    *id : serial
+    *isActive : boolean
+}
+
+
+
+entity Photo{
+    *id : serial
+    *name : varchar
+    *size : bigint
+}
+
+entity File{
+    *id : serial
+    *name : varchar
+    *size : bigint
+}
+
+User||..{Conversation_User
+Conversation||..{Conversation_User
+User||..{Contact
+Contact}..||User
+Conversation||..o{Message : has
+Message||..{Photo
+Message||..{File
+User||..o{Message : sends
+
+@enduml
