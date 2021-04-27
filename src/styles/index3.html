@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messenger</title>
+    <!--
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+     rel="stylesheet"integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous"> 
+      -->
+    <link rel="stylesheet" href="style_phone.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <!--Mobile-->
+    <div class="messenger">
+
+        <span class="messenger__title">Messenger</span>
+
+
+        <div class="messenger__icon-refresh">
+            <img class="messenger__icon-refresh1" src="../layout/assets/images/arrow.png" alt="Switch">
+            <img class="messenger__icon-refresh2" src="../layout/assets/images/arrow_below.png" alt="Switch">
+            <img class="messenger__icon-refresh3" src="../layout/assets/images/arrow_circle.png" alt="Switch">
+        </div>
+
+
+        <div class="menu-bar-recent">
+            <div class="menu-bar__icon-phone">
+                <a href="#" class="">
+                    <img class="menu-bar__icon-phone-circle" src="../layout/assets/images/menu_circle.png"
+                        alt="Contacts">
+                    <img class="menu-bar__icon-phone-pic" src="../layout/assets/images/bubble_phone.png" alt="Messages">
+                    <span class="menu-bar__description-phone">Messages</span>
+                </a>
+            </div>
+            <div class="menu-bar__icon-phone">
+                <a href="#" class="">
+                    <img class="menu-bar__icon-phone-circle" src="../layout/assets/images/menu_circle.png"
+                        alt="Dark mode">
+                    <img class="menu-bar__icon-phone-pic" src="../layout/assets/images/moon_phone.png" alt="Dark mode">
+                    <span class="menu-bar__description-phone">Dark mode</span>
+                </a>
+            </div>
+
+        </div>
+
+
+        <div class="menu-bar">
+
+            <div class="menu-bar__icon menu-bar__icon-m">
+                <a href="#" class="">
+                    <img src="../layout/assets/images/M.png" alt="Menu">
+                </a>
+            </div>
+            <div class="menu-bar__icon ">
+                <a href="#" class="">
+                    <img src="../layout/assets/images/bubble.png" alt="Chat with people">
+                </a>
+            </div>
+            <div class="menu-bar__icon">
+                <a href="#" class="">
+                    <img src="../layout/assets/images/people.png" alt="Go to groups">
+                </a>
+            </div>
+            <div class="menu-bar__icon-dark-mode">
+                <a href="#" class="">
+                    <img src="../layout/assets/images/moon.png" alt="Moon">
+                </a>
+            </div>
+            <!--Mobile icons-->
+            <div class="menu-bar__icon-phone">
+                <a href="#" class="">
+                    <img class="menu-bar__icon-phone-circle" src="../layout/assets/images/menu_circle.png"
+                        alt="Choose a photo">
+                    <img class="menu-bar__icon-phone-pic" src="../layout/assets/images/photo_phone.png"
+                        alt="Choose a photo">
+                    <span class="menu-bar__description-phone">Photo</span>
+
+                </a>
+            </div>
+
+
+            <div class="menu-bar__icon-phone">
+                <a href="#" class="">
+
+                    <img class="menu-bar__icon-phone-circle" src="../layout/assets/images/menu_circle.png"
+                        alt="Choose a file">
+                    <img class="menu-bar__icon-phone-pic" src="../layout/assets/images/attachment_phone.png"
+                        alt="Choose a file">
+                    <span class="menu-bar__description-phone">File</span>
+                </a>
+            </div>
+            <div class="menu-bar__icon-phone">
+                <a href="#" class="">
+                    <img class="menu-bar__icon-phone-circle" src="../layout/assets/images/menu_circle.png"
+                        alt="Contacts">
+                    <img class="menu-bar__icon-phone-pic" src="../layout/assets/images/people_phone.png" alt="Contacts">
+                    <span class="menu-bar__description-phone">Contacts</span>
+                </a>
+            </div>
+            <div class="menu-bar__icon-phone">
+                <a href="#" class="">
+                    <img class="menu-bar__icon-phone-circle" src="../layout/assets/images/menu_circle.png"
+                        alt="Dark mode">
+                    <img class="menu-bar__icon-phone-pic" src="../layout/assets/images/moon_phone.png" alt="Dark mode">
+                    <span class="menu-bar__description-phone">Dark mode</span>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="leftpage">
+            <nav class="notification">
+                <span class="notification__title">Messages</span>
+
+                <img class="notification__number" src="../layout/assets/images/circle.png" alt="Notifications">
+            </nav>
+
+            <nav class="message-type">
+                <a href="#" class="message-type__recent">Recent</a>
+                <a href="#" class="message-type__pinned">Pinned</a>
+            </nav>
+
+            <div class="message">
+                <div class="message__picture">
+
+                    <img src="../layout/assets/images/profile_pic.png" alt="Profile picture">
+                </div>
+
+                <span class="message__name">Artur Towish</span>
+                <small class="message__time">1h ago</small>
+
+                <span class="message__content">Some sample message</span>
+            </div>
+
+            <div class="message">
+                <div class="message__picture">
+
+                    <img src="../layout/assets/images/profile_pic.png" alt="Profile picture">
+                </div>
+
+                <span class="message__name">Nix Golddigger</span>
+                <small class="message__time">2h ago</small>
+
+                <span class="message__content">Second Some sample message</span>
+
+
+            </div>
+        </div>
+
+
+
+        <div class="rightpage">
+
+            <form class="search-form">
+                <input type="text" class="search-form__input">
+                <img class="search-form__icon" src="../layout/assets/images/search.png" alt="Search">
+            </form>
+
+            <div class="chat">
+
+                <span class="title-conversation">Conversation</span>
+                <div class="conversation">
+
+                    <div class="conversation-picture conversation-received">
+                        <img class="" src="../layout/assets/images/profile_pic.png" alt="Profile picture">
+                    </div>
+
+                    <div class="conversation-messages conversation-received">
+
+                        <div class="conversation-message">
+                            <p class=""></p>
+                        </div>
+                        <div class="conversation-message">
+                            <p class=""></p>
+                        </div>
+                        <div class="conversation-message conversation-message-phone1">
+                            <p class="conversation-message__text">Some very long sample message that takes more space
+                            </p>
+                        </div>
+                    </div>
+                    <div class="conversation-messages">
+                        <div class="conversation-message">
+                            <p class=""></p>
+                        </div>
+                        <div class="conversation-message">
+                            <p class=""></p>
+                        </div>
+                        <div class="conversation-message conversation-message-phone2">
+                            <p class="conversation-message__text">Sample message that takes more space</p>
+                        </div>
+                    </div>
+
+                    <div class="conversation-picture ">
+                        <img class="" src="../layout/assets/images/profile_pic.png" alt="Profile picture">
+                    </div>
+                </div>
+
+                <form class="form-type">
+                    <div class="form-type__icon-cancel">
+                        <img class="form-type__icon-cancel-circle" src="../layout/assets/images/arrow_circle.png"
+                            alt="Cancel message">
+                        <img class="form-type__icon-cancel-pic" src="../layout/assets/images/Line1.png"
+                            alt="Cancel message">
+                        <img class="form-type__icon-cancel-pic" src="../layout/assets/images/Line2.png"
+                            alt="Cancel message">
+
+                    </div>
+                    <input type="text" placeholder="Type your message" class="form-type__input">
+                    <img class="form-type__icon-send" src="../layout/assets/images/send.png" alt="Send a message">
+                    <img class="form-type__icon-file" src="../layout/assets/images/attachment.png" alt="Choose a file">
+                    <img class="form-type__icon-photo" src="../layout/assets/images/photo.png" alt="Choose a photo">
+                </form>
+
+            </div>
+
+        </div>
+
+
+    </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,274 @@
+:root{
+    /*Color definitions*/
+    --grey: #C4C4C4;
+    --light-purple:#EEEEF6; 
+    --light-grey: #dad6d6;
+    --purple:#4849A1;
+    --white:#ffff;
+
+/*Fonts*/
+
+--general-font: 'Roboto', sans-serif;
+
+/*Sizing (padding,margin...)*/
+}
+    
+    @media only screen and (min-width:40rem){
+    
+    body {
+    height:100vh;
+    margin:0;
+    
+    font-size:16px;
+    background-color:var(--light-purple);
+    }
+    
+    a {
+    text-decoration:none;
+    }
+    
+    .messenger {
+    display:flex;
+    flex-direction:row;
+    padding:1rem 0 1rem 1rem;
+    }
+    
+    .leftpage {
+    flex-direction:column;
+    width:20%;
+    }
+    
+    .menu-bar {
+    display:flex;
+    flex-direction:column;
+    height:90vh;
+    padding:1rem;
+    
+    background-color:var(--purple);
+    border-radius:1rem;
+    }
+    
+    .menu-bar__icon {
+    padding-top:1rem;
+    text-align:center;
+    }
+    
+    .menu-bar__icon-m {
+    padding-bottom:2rem;
+    }
+    
+    .menu-bar__icon-dark-mode {
+    margin-top:auto;
+    padding-bottom:1rem;
+    vertical-align:bottom;
+    
+    text-align:center;
+    }
+    
+    .notification {
+    display:flex;
+    padding:1rem;
+    width:20%;
+    }
+    
+    .notification__title {
+    font-family:var(--general-font);
+    font-size:1.3rem;
+    font-weight:bold;
+    line-height:2rem;
+    }
+    
+    .notification__number {
+    margin:auto;
+    padding-left:.5rem;
+    }
+    
+    .message-type {
+    display:flex;
+    padding-bottom:1rem;
+    padding-left:1rem;
+    width:45%;
+    }
+    
+    .message-type__recent {
+    height:1.2rem;
+    
+    font-family:var(--general-font);
+    font-size:.8rem;
+    font-weight:bold;
+    line-height:1.5rem;
+    border-bottom:solid;
+    }
+    
+    .message-type__pinned {
+    padding-left:1rem;
+    
+    font-family:var(--general-font);
+    font-size:.8rem;
+    font-weight:bold;
+    line-height:1.5rem;
+    }
+    
+    .message {
+    display:grid;
+    grid-template-areas:
+    "picture name name time" 
+    "picture content content time";
+    margin-top:.2rem;
+    padding:.2rem;
+    
+    font-family:var(--general-font);
+    background-color:var(--light-grey);
+    }
+    
+    .message__picture {
+    grid-area:picture;
+    justify-self:start;
+    padding:.5rem;
+    }
+    
+    .message__name {
+    grid-area:name;
+    justify-self:start;
+    
+    font-size:.9rem;
+    font-weight:bold;
+    line-height:2rem;
+    }
+    
+    .message__time {
+    grid-area:time;
+    justify-self:end;
+    }
+    
+    .message__content {
+    grid-area:content;
+    justify-self:start;
+    padding-bottom:.5rem;
+    
+    font-size:.8rem;
+    }
+    
+    .rightpage {
+    flex-direction:column;
+    width:80%;
+    }
+    
+    .search-form {
+    display:flex;
+    padding:0 0 1rem 2rem;
+    width:70%;
+    }
+    
+    .search-form__input {
+    height:2rem;
+    width:90%;
+    
+    border:0;
+    border-radius:1rem;
+    }
+    
+    .search-form__icon {
+    margin:auto;
+    }
+    
+    .chat {
+    display:flex;
+    flex-direction:column;
+    height:95%;
+    
+    background-color:var(--white);
+    }
+    
+    .conversation {
+    display:flex;
+    flex-direction:row;
+    height:85%;
+    justify-content:space-evenly;
+    padding:1rem;
+    }
+    
+    .conversation-picture {
+    display:flex;
+    flex-direction:column;
+    }
+    
+    .conversation-messages {
+    display:flex;
+    flex-direction:column;
+    row-gap:.1rem;
+    }
+    
+    .conversation-message {
+    height:3rem;
+    width:30vw;
+    
+    background-color:var(--grey);
+    border-radius:.5rem;
+    }
+    
+    .conversation-received {
+    margin-top:auto;
+    }
+    
+    .form-type {
+    display:flex;
+    flex-direction:row;
+    padding:0 0 1rem 2rem;
+    width:95%;
+    
+    text-align:center;
+    }
+    
+    .form-type__input {
+    height:2rem;
+    margin:auto;
+    width:80%;
+    
+    font-weight:bold;
+    border-radius: 1rem;
+    border:1;
+    border-color:var(--purple);
+    }
+    
+    .form-type__icon-send {
+    margin:auto;
+    }
+    
+    .form-type__icon-file {
+    margin:auto;
+    }
+    
+    .form-type__icon-photo {
+    margin:auto;
+    }
+
+    /*HIDE mobile*/
+    .messenger__title {
+    display:none;
+    }
+    
+    .title-conversation {
+    display:none;
+    }
+    
+    .messenger__icon-refresh {
+    display:none;
+    }
+    
+    .conversation-message__text {
+    display:none;
+    }
+    
+    .menu-bar__icon-phone {
+    display:none;
+    }
+    
+    .form-type__icon-cancel {
+    display:none;
+    }
+    
+    .menu-bar-recent {
+    display:none;
+    }
+    }
