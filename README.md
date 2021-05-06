@@ -1,16 +1,15 @@
 # Seminar Project
 
-Hi, and welcome to the fourth iteration!
+Hi, and welcome to the fifth iteration!
 
-This time we will style our Messagner using CSS.
+In this iteration, we will focus on website optimizations and adding some hover effects.
 
-You can return to Figma. There you have a mobile and desktop layout. (Check the design.)[https://www.figma.com/file/JAZVDDThaK9FHUzoB6f80D/Messenger]
+Your tasks are:
+Optimization
+1. Have an accessibility score of 100 in Lighthouse for desktop and mobile view
+2. Have an SEO score of 100 in Lighthouse for desktop and mobile view
+3. Get a high enough number for performance. You cannot achieve 100 in the current setup. But you can get it pretty high.
 
-## Your tasks:
-1. Create mobile and desktop version using the mobile first approach
-2. Use BEM to name your CSS classes and components
-3. Use the CSS grid to create the layout
-
-Note:
-There will probably be a need to change HTML elements. Focus on BEM - it will help you create the proper HTML structure and suitable classes.
-Do not forget to use responsive units - percents, rem, fractions, vw, vh...
+Graphic improvements
+1. When a user hovers over menu items, make them bigger (e.g. 1.3rem) using 500ms transition.
+2. Add white background glow to menu items on hover with reasonable transition time.
