@@ -1,15 +1,18 @@
 # Seminar Project
+This time we will prepare basic stuff for the backend. We will initialize our node project, install typescript, play with the database. Before you start, create a folder messenger-api for this purpose and init Node project using npm.
 
-Hi, and welcome to the fifth iteration!
+## Project setup
+First, do the basic setup of all dependencies (Use can use a tutorial on Prisma page - start from scratch):
+Install typescript and ts-node, and ts-node to start script in package.json.
+Install Prisma
+Setup database and connection string to DB in .env file
 
-In this iteration, we will focus on website optimizations and adding some hover effects.
+## Development
+Add DB schema and models required for your tasks. 
+Create main.ts in the src folder. In this file, connect to the DB and do the following:
+Insert two contacts into DB.
+Insert one message with one contact.
+Insert at least five messages with the second contact.
+Select the last message with the second contact and write it to the console.
 
-Your tasks are:
-Optimization
-1. Have an accessibility score of 100 in Lighthouse for desktop and mobile view
-2. Have an SEO score of 100 in Lighthouse for desktop and mobile view
-3. Get a high enough number for performance. You cannot achieve 100 in the current setup. But you can get it pretty high.
-
-Graphic improvements
-1. When a user hovers over menu items, make them bigger (e.g. 1.3rem) using 500ms transition.
-2. Add white background glow to menu items on hover with reasonable transition time.
+Note: Do not forget to name files and folders correctly. Good structure is the basis of a maintainable project.
