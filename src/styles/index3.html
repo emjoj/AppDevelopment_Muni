@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="On this site you can connect and chat with your friends.">
     <title>Messenger</title>
     <!--
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
@@ -12,12 +13,13 @@
       -->
     <link rel="stylesheet" href="style_phone.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="../layout/assets/images/favicon.ico" type="image/x-icon">  
 
 </head>
 
 <body>
     <!--Mobile-->
-    <div class="messenger">
+    <main class="messenger">
 
         <span class="messenger__title">Messenger</span>
 
@@ -59,17 +61,17 @@
             </div>
             <div class="menu-bar__icon ">
                 <a href="#" class="">
-                    <img src="../layout/assets/images/bubble.png" alt="Chat with people">
+                    <img  src="../layout/assets/images/bubble.png" alt="Chat with people">
                 </a>
             </div>
-            <div class="menu-bar__icon">
+            <div class="menu-bar__icon ">
                 <a href="#" class="">
-                    <img src="../layout/assets/images/people.png" alt="Go to groups">
+                    <img  src="../layout/assets/images/people.png" alt="Go to groups">
                 </a>
             </div>
             <div class="menu-bar__icon-dark-mode">
                 <a href="#" class="">
-                    <img src="../layout/assets/images/moon.png" alt="Moon">
+                    <img  src="../layout/assets/images/moon.png" alt="Moon">
                 </a>
             </div>
             <!--Mobile icons-->
@@ -158,7 +160,9 @@
         <div class="rightpage">
 
             <form class="search-form">
-                <input type="text" class="search-form__input">
+                <label class ="search-form__label" for="search"> Search a contact </label>
+                <input id = "search" type="text" class="search-form__input">
+                
                 <img class="search-form__icon" src="../layout/assets/images/search.png" alt="Search">
             </form>
 
@@ -223,7 +227,7 @@
 
 
     </div>
-    </div>
+</main>
 
 </body>
 
