@@ -22,7 +22,7 @@ Define the following routes:
 | PUT    | /conversation/{id}/message/{id}                          | Edit the message and mark it as edited                        |
 | DELETE | /conversation/{id}/message/{id}                          | Delete specified message (set hidden attribute or deleted_at) |
 | POST   | /conversation                                            | Create new conversation with users defined in request         |
-| POST   | /conversation/{id}                                       | Get information about conversation, participants, last message|
+| GET    | /conversation/{id}                                       | Get information about conversation, participants, last message|
 
 To show conversations that are related only to that user, we are going to use a header `X-User`. To obtain a header in `expressjs` simply
 use `req.header('X-User')`. In a real-world projects `Authorization` header is often used for this purpose.
