@@ -3,7 +3,9 @@
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL") 
+
+url      = "postgresql://postgres:admin@localhost:5432/postgres?schema=public"
+//url      = env("DATABASE_URL") 
 }
 
 
@@ -19,7 +21,7 @@ model User {
   messages      Message[]
   user1         Contact[]               @relation("user1") 
   user2         Contact[]               @relation("user2") 
-  conversations Conversation_User[]
+  conversations ConversationUser[]
 }
 
 model Contact {
@@ -34,12 +36,13 @@ model Contact {
 model Conversation {
 id          Int                   @id @default(autoincrement())
 isActive    Boolean               @default(false)
-users       Conversation_User[]
+isPinned    Boolean               @default(false)
+users       ConversationUser[]
 messages    Message[]
 
 }
 
-model Conversation_User {
+model ConversationUser {
 id                  Int               @id @default(autoincrement())
 conversation        Conversation      @relation(fields: [conversationId], references: [id])
 conversationId      Int
@@ -52,7 +55,7 @@ model Message {
   id              Int             @id @default(autoincrement())
   senderId        Int
   sender          User            @relation(fields: [senderId], references: [id])
-  text            String?
+  content         String?
   createdAt       DateTime        @default(now())
   conversationId  Int?
   conversation    Conversation?   @relation(fields: [conversationId], references: [id])

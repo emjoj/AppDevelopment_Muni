@@ -9,18 +9,20 @@ async function main() {
   //const user2 = {firstName:"Anna", lastName: "Black",};
   //const message1 = { senderId:1,text: "Hey", };
   //const message2 = {senderId:2,: "calm down", };
+  //const conversationUser1 = {conversationId:1,userId:2, };
+  //await prisma.user.create({ data:user2  });
   //await prisma.message.create({ data:message2  });
-  //await prisma.message.update({ where: { id: 4 }, data: { conversationId: 1}, })
+  //await prisma.message.update({ where: { id: 6 }, data: { content: "calm down"}, })
   //const dates = allMessages.map(d => d.createdAt);
+  //const allusers = await prisma.message.findMany();
 
-                //--Used to create data end--
- 
+              //--Used to create data finish--
 
     const allMessages = await prisma.message.findMany();
-    const messagesFrom1 = allMessages.filter(m => m.senderId == 1);
-    const lastId = Math.max(...messagesFrom1.map(user => user.id));
-    const lastMessage = messagesFrom1.filter(m=> m.id==lastId);
-    const textLastMessage = lastMessage.map(m => m.text);
+    const messagesFromUser1 = allMessages.filter(m => m.senderId == 1);
+    const messageLastId = Math.max(...messagesFromUser1.map(user => user.id));
+    const lastMessage = messagesFromUser1.filter(m=> m.id==messageLastId);
+    const textLastMessage = lastMessage.map(m => m.content);
     
   console.log(lastMessage);  
   console.log(textLastMessage);
