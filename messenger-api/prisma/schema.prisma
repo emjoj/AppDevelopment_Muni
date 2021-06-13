@@ -4,8 +4,7 @@
 datasource db {
   provider = "postgresql"
 
-url      = "postgresql://postgres:admin@localhost:5432/postgres?schema=public"
-//url      = env("DATABASE_URL") 
+url      = env("DATABASE_URL") 
 }
 
 
