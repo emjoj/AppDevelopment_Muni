@@ -14,18 +14,20 @@ async function main() {
   //await prisma.message.create({ data:message2  });
   //await prisma.message.update({ where: { id: 6 }, data: { content: "calm down"}, })
   //const dates = allMessages.map(d => d.createdAt);
-  //const allusers = await prisma.message.findMany();
+  //const allusers = await prisma.user.findMany();
 
               //--Used to create data finish--
-
-    const allMessages = await prisma.message.findMany();
-    const messagesFromUser1 = allMessages.filter(m => m.senderId == 1);
-    const messageLastId = Math.max(...messagesFromUser1.map(user => user.id));
-    const lastMessage = messagesFromUser1.filter(m=> m.id==messageLastId);
-    const textLastMessage = lastMessage.map(m => m.content);
     
+    const messagesFromRightUser = await prisma.message.findMany({
+      where: {
+        senderId: 1}});
+    const messageLastId = Math.max(...messagesFromRightUser.map(user => user.id));
+    const lastMessage = messagesFromRightUser.filter(m=> m.id==messageLastId);
+    const textLastMessage = lastMessage.map(m => m.content);
+  
   console.log(lastMessage);  
   console.log(textLastMessage);
+  
 
 }
   

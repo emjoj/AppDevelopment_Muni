@@ -4,13 +4,18 @@
   "description": "Messenger - chat application for connecting people.",
   "scripts": {
     "start": "ts-node src/index.ts",
+    "seed": "prisma db seed --preview-feature",
+    "migrate": "prisma migrate dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Ema Stefanikova",
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^2.22.1",
-    "ts-node": "^9.1.1",
+    "ts-node": "^9.1.1"
+    
+  },
+  "devDependencies": {
     "typescript": "^4.2.4"
   }
 }
