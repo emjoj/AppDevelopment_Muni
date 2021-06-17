@@ -1,0 +1,22 @@
+{
+  "name": "messenger-api",
+  "version": "1.0.0",
+  "description": "Messenger - chat application for connecting people.",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "seed": "prisma db seed --preview-feature",
+    "migrate": "prisma migrate dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ema Stefanikova",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^2.22.1",
+    "prisma": "^2.22.1"
+  },
+  "devDependencies": {
+    "@types/node": "^15.12.2",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.3"
+  }
+}
