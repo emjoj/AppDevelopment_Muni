@@ -11,14 +11,14 @@
   "author": "Ema Stefanikova",
   "license": "ISC",
   "dependencies": {
-    "@prisma/client": "^2.22.1",
+    "@prisma/client": "^2.26.0",
     "body-parser": "^1.19.0",
-    "express": "^4.17.1",
-    "prisma": "^2.22.1"
+    "express": "^4.17.1"
   },
   "devDependencies": {
     "@types/express": "^4.17.12",
     "@types/node": "^15.12.2",
+    "prisma": "^2.26.0",
     "ts-node": "^10.0.0",
     "ts-node-dev": "^1.1.6",
     "typescript": "^4.3.3"

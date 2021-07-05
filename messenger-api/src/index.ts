@@ -1,252 +1,187 @@
 import { PrismaClient } from "@prisma/client";
 import express from "express";
-import bodyParser from "body-parser";
+
 
 const prisma = new PrismaClient();
 
-const port:number = 3000;
+const port: number = 3000;
 const app = express();
 
 
-app.use(bodyParser.json())
+app.use(express.json())
 
-app.get('/api/conversation/:conversationId/messages/author/:userId', async (req,res)=>{
+app.get('/api/conversation/:conversationId/messages', async (req, res) => {
 
-  const conversationUserExist = await prisma.conversationUser.findMany({
-    where:{
-      conversationId: Number(req.params.conversationId),
-      userId: Number(req.params.userId)
+  if (req.header("X-User") != null) {
+    const conversationUserExist = await prisma.conversationUser.findMany({
+      where: {
+        conversationId: Number(req.params.conversationId),
+        userId: Number(req.header("X-User"))
+      }
+    });
 
+    if (conversationUserExist.length == 0) {
+      res.status(404).json({ error: 'User or conversation does not exists' });
+    };
+
+    const messagesFromSender = await prisma.message.findMany({
+      where: {
+        conversationId: Number(req.params.conversationId),
+        senderId: Number(req.header("X-User"))
+      }
+    })
+    res.send(messagesFromSender);
+  };
+
+  const conversationExist = await prisma.conversation.findUnique({
+    where: {
+      id: Number(req.params.conversationId)
     }
   });
 
-  if(conversationUserExist.length == 0){
-    res.status(404).json({ error: 'Sender or conversation does not exists'});
+  if (conversationExist == null) {
+    res.status(404).json({ error: 'Conversation does not exists' });
   }
-  else{
-   const messagesFromSender = await prisma.message.findMany({
-     where:{
-       conversationId: Number(req.params.conversationId),
-       senderId: Number(req.params.userId)
+
+  const messages = await prisma.message.findMany({
+    where: {
+      conversationId: Number(req.params.conversationId),
     }
-  }
-  )
-   res.status(200).send(JSON.stringify(messagesFromSender));
-  }
+  })
+  res.send(messages);
 });
 
-app.get('/api/conversation/:conversationId/messages', async (req,res)=>{
+app.get('/api/conversation/recent', async (req, res) => {
 
-  const conversationUserExist = await prisma.conversationUser.findMany({
-    where:{
-      conversationId: Number(req.params.conversationId),
-      userId: Number(req.header("X-User"))
-
+  const conversations10 = await prisma.conversation.findMany({
+    orderBy: {
+      updatedAt: 'desc'
+    },
+    take: 10,
+    include: {
+      messages: {
+        orderBy: {
+          id: 'desc',
+        },
+        take: 1,
+      }
     }
   });
+  res.send(conversations10);
+});
 
-  console.log(conversationUserExist.length)
 
-  if(conversationUserExist.length == 0){
-    res.status(404).json({ error: 'User or conversation does not exists'});
-  }
+app.post('/api/conversation/:conversationId/message', async (req, res) => {
 
-  else {
-  const messages = await prisma.message.findMany({
-    where:{
-      conversationId: Number(req.params.conversationId),
-      
-  }})
-  res.status(200).send(JSON.stringify(messages));
-}
-})
-
-app.get('/api/conversation/recent', async (req,res)=>{
-  
-      const conversations10 = await prisma.conversation.findMany({
-        //orderBy:{
-          //messages:{
-
-          //}
-       // }
-       take:10,
-        select: {
-          id: true,
-          isActive:true,
-          isPinned:true,
-              messages:{
-                orderBy: {
-                  id: 'desc',
-                },
-                take: 1,
-                select:{
-                  id:true,
-                  createdAt:true,
-                  content:true,
-  }}}
-      })
-      res.status(200).send(JSON.stringify(conversations10));
-    }),
-      
-
-app.post('/api/conversation/:conversationId/message', async (req,res)=>{
-
-  const conversationExist = await prisma.conversation.findMany({
-    where:{
+  const conversationExist = await prisma.conversation.findUnique({
+    where: {
       id: Number(req.params.conversationId),
     }
   });
 
-  if(conversationExist.length == 0){
-    res.status(404).json({ error: 'Conversation does not exists'});
-  }else{
-  
+  if (conversationExist == null) {
+    res.status(404).json({ error: 'Conversation does not exists' });
+  };
+
   const entry = req.body;
 
-  await prisma.message.create({ 
-    data:{
+  const newMessage = await prisma.message.create({
+    data: {
       senderId: entry.senderId,
       content: entry.content,
       conversationId: entry.conversationId
     }
-    })
-  res.status(200).send("Ok")
-  }
+  });
+
+  await prisma.conversation.update({
+    where: {
+      id: conversationExist?.id
+    },
+    data: {
+      updatedAt: newMessage.createdAt
+    }
+  });
+
+  res.send({ message: "OK" })
 });
 
-app.post('/api/conversation', async (req,res)=>{  
-  await prisma.conversation.create({ 
-    data:{ 
+app.post('/api/conversation', async (req, res) => {
+  const newConversation = await prisma.conversation.create({
+    data: {
     }
-    });
+  });
 
   const entry = req.body;
 
-  const lastConversationId = await prisma.conversation.findFirst({
-    orderBy: {
-      id: "desc"
-    },
-    select:{
-      id:true
+  await prisma.conversationUser.create({
+    data: {
+      conversationId: Number(newConversation?.id),
+      userId: entry.rightUserId
     }
   });
 
-  console.log((lastConversationId?.id))
-
- await prisma.conversationUser.create({ 
-    data:{
-    conversationId: Number(lastConversationId?.id),
-    userId: entry.rightUserId
-    }
-    });
-    
-  await prisma.conversationUser.create({ 
-    data:{
-      conversationId: Number(lastConversationId?.id),
+  await prisma.conversationUser.create({
+    data: {
+      conversationId: Number(newConversation?.id),
       userId: entry.leftUserId
     }
-    });
-  
-  res.status(200).send("Ok");
+  });
+  res.send({ conversation: "OK" });
 });
 
-app.get('/api/conversation/:conversationId', async (req,res)=>{
+app.get('/api/conversation/:conversationId', async (req, res) => {
 
-  const conversationExist = await prisma.conversation.findMany({
-    where:{
+  const conversation = await prisma.conversation.findFirst({
+    where: {
       id: Number(req.params.conversationId),
-    }
-  });
-
-  if(conversationExist.length == 0 ){
-    res.status(404).json({ error: 'Conversation does not exists'});
-  }else{
-
-const getConversation = await prisma.conversation.findFirst({
-  where: {
-    id: Number(req.params.conversationId),
-  },
-  select: {
-    id: true,
-    isActive:true,
-    isPinned:true,
-    users: {
-      select: {
-        user:{
+    },
+    include: {
+      users: {
+        include: {
+          user: true
         }
       },
-    },
-    
-    messages:{
-      orderBy: {
-        id: 'desc',
-      },
-      take: 1,
-      select:{
-        id:true,
-        createdAt:true,
-        content:true,
+      messages: {
+        orderBy: {
+          id: 'desc',
+        },
+        take: 1
       }
-    }
-  },
-});
-  res.status(200).send(JSON.stringify(getConversation));
-}
-});
-
-app.put('/api/conversation/:conversationId/message/:messageId', async (req,res)=>{
-
-  const conversationExist = await prisma.conversation.findMany({
-    where:{
-      id: Number(req.params.conversationId),
-      
-    }
+    },
   });
 
-  const messageExist = await prisma.message.findMany({
-    where:{
-      id: Number(req.params.messageId),
-    }
-  });
+  if (conversation == null) {
+    res.status(404).json({ error: 'Conversation does not exists' });
+  };
+  res.send(conversation);
 
-  if(conversationExist.length == 0 || messageExist.length==0){
-    res.status(404).json({ error: 'Conversation or message does not exists'});
-    
-  }else{  
-    
+});
+
+app.put('/api/conversation/:conversationId/message/:messageId', async (req, res) => {
+
+  if (await verification(Number(req.params.conversationId), Number(req.params.messageId)) == false) {
+    res.status(404).json({ error: 'Conversation or message does not exists' });
+  };
+
   const updateMessage = await prisma.message.update({
     where: {
       id: Number(req.params.messageId)
     },
     data: {
       content: req.body.newContent,
-    
-    },
-  });
-  console.log(updateMessage);
-  res.status(200).send(JSON.stringify(updateMessage));
-}
-  });
-
-
-
-app.delete('/api/conversation/:conversationId/message/:messageId', async (req,res)=>{
-  const conversationExist = await prisma.conversation.findMany({
-    where:{
-      id: Number(req.params.conversationId),
+      edited: true
     }
   });
 
-  const messageExist = await prisma.message.findMany({
-    where:{
-      id: Number(req.params.messageId),
-    }
-  });
+  res.send(updateMessage);
 
-  if(conversationExist.length == 0 || messageExist.length==0){
-    res.status(404).json({ error: 'Conversation or message does not exists'});
-    
-  }else{  
+});
+
+app.delete('/api/conversation/:conversationId/message/:messageId', async (req, res) => {
+
+  if (await verification(Number(req.params.conversationId), Number(req.params.messageId)) == false) {
+    res.status(404).json({ error: 'Conversation or message does not exists' });
+  };
 
   const deleteMessage = await prisma.message.update({
     where: {
@@ -254,36 +189,37 @@ app.delete('/api/conversation/:conversationId/message/:messageId', async (req,re
     },
     data: {
       content: "",
+      delatedAt: new Date()
+
     },
   });
-  console.log(deleteMessage);
-  res.status(200).send(JSON.stringify(deleteMessage));
-}
+
+  res.send(deleteMessage);
+
+});
+
+async function verification(conversationId: any, messageId: any): Promise<boolean> {
+  const conversationExist = await prisma.conversation.findUnique({
+    where: {
+      id: Number(conversationId)
+    }
   });
 
- //async function  verification(conversationId: any,messageId:any): Promise<any> {
- //   const conversationExist = await prisma.conversation.findMany({
- //     where:{
- //       id: Number(conversationId)
- //     }
- //   });
-  
-//    const messageExist = await prisma.message.findMany({
-//      where:{
-//        id: Number(messageId)
-//      }
-//    });
+  const messageExist = await prisma.message.findUnique({
+    where: {
+      id: Number(messageId)
+    }
+  });
 
-//    if(conversationExist.length == 0 || messageExist.length==0){
-//      return Promise.resolve(true)}
-//      else{
-//        return Promise.reject(false)
-//      }}
+  if (conversationExist == null || messageExist == null) {
+    return new Promise((reject) => { reject(false); })
+  } return new Promise((resolve) => { resolve(true); })
+};
 
 
 async function main() {
 
-               //--Used to create data start--
+  //--Used to create data start--
 
   //const user1 = {firstName:"Alex",lastName: "Cooper" };
   //const user2 = {firstName:"Anna", lastName: "Black",};
@@ -297,36 +233,34 @@ async function main() {
   //const allusers = await prisma.message.findMany();
   //console.log(allusers);
 
-              //--Used to create data finish--
-    
-    const messagesFromRightUser = await prisma.message.findMany({
-      where: {
-        senderId: 1
-      }
+  //--Used to create data finish--
+
+  const messagesFromRightUser = await prisma.message.findMany({
+    where: {
+      senderId: 1
     }
-    );
-    const messageLastId = Math.max(...messagesFromRightUser.map(user => user.id));
-    const lastMessage = messagesFromRightUser.filter(m=> m.id==messageLastId);
-    const textLastMessage = lastMessage.map(m => m.content);
-  
+  }
+  );
+  const messageLastId = Math.max(...messagesFromRightUser.map(user => user.id));
+  const lastMessage = messagesFromRightUser.filter(m => m.id == messageLastId);
+  const textLastMessage = lastMessage.map(m => m.content);
+
   //console.log(lastMessage);  
   //console.log(textLastMessage);
-  
+
   console.log(`Messenger is listening on port ${port}`)
 
   app.listen(port);
 
 }
-  
-  main()
-    .catch((e) => {
-      throw e
-    })
-    .finally(async () => {
-      await prisma.$disconnect()
-    })
-  
-function reply(arg0: string): any {
-  throw new Error("Function not implemented.");
-}
+
+main()
+  .catch((e) => {
+    throw e
+  })
+  .finally(async () => {
+    await prisma.$disconnect()
+  });
+
+
 

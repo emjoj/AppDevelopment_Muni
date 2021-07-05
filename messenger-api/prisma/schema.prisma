@@ -33,11 +33,12 @@ model Contact {
 }
 
 model Conversation {
-  id       Int                @id @default(autoincrement())
-  isActive Boolean            @default(false)
-  isPinned Boolean            @default(false)
-  users    ConversationUser[]
-  messages Message[]
+  id        Int                @id @default(autoincrement())
+  isActive  Boolean            @default(false)
+  isPinned  Boolean            @default(false)
+  updatedAt DateTime?
+  users     ConversationUser[]
+  messages  Message[]
 
 }
 
