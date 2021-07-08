@@ -30,7 +30,7 @@ app.get('/api/conversation/:conversationId/messages', async (req, res) => {
         senderId: Number(req.header("X-User"))
       }
     })
-    res.send(messagesFromSender);
+    return res.send(messagesFromSender);
   };
 
   const conversationExist = await prisma.conversation.findUnique({
@@ -48,7 +48,7 @@ app.get('/api/conversation/:conversationId/messages', async (req, res) => {
       conversationId: Number(req.params.conversationId),
     }
   })
-  res.send(messages);
+  return res.send(messages);
 });
 
 app.get('/api/conversation/recent', async (req, res) => {
@@ -126,7 +126,7 @@ app.post('/api/conversation', async (req, res) => {
       userId: entry.leftUserId
     }
   });
-  res.send({ conversation: "OK" });
+  res.send({newConversationId:newConversation?.id});
 });
 
 app.get('/api/conversation/:conversationId', async (req, res) => {
@@ -212,8 +212,8 @@ async function verification(conversationId: any, messageId: any): Promise<boolea
   });
 
   if (conversationExist == null || messageExist == null) {
-    return new Promise((reject) => { reject(false); })
-  } return new Promise((resolve) => { resolve(true); })
+    return false
+  } return true
 };
 
 
@@ -235,18 +235,11 @@ async function main() {
 
   //--Used to create data finish--
 
-  const messagesFromRightUser = await prisma.message.findMany({
-    where: {
-      senderId: 1
-    }
-  }
-  );
-  const messageLastId = Math.max(...messagesFromRightUser.map(user => user.id));
-  const lastMessage = messagesFromRightUser.filter(m => m.id == messageLastId);
-  const textLastMessage = lastMessage.map(m => m.content);
+  //const messagesFromRightUser = await prisma.message.findMany({where: { senderId: 1}  }  );
+  //const messageLastId = Math.max(...messagesFromRightUser.map(user => user.id));
+  //const lastMessage = messagesFromRightUser.filter(m => m.id == messageLastId);
+  //const textLastMessage = lastMessage.map(m => m.content);
 
-  //console.log(lastMessage);  
-  //console.log(textLastMessage);
 
   console.log(`Messenger is listening on port ${port}`)
 
