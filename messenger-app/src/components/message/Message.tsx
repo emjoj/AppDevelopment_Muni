@@ -46,9 +46,7 @@ export const Message = () => {
 const messages = useRecoilValue(messagesState);
 
 const [conversations, setConversations] = useRecoilState(conversationsState);
-
-
-  const { data, error }:any = useSWR('http://localhost:3000/api/conversation/recent', fetcher)
+const { data, error }:any = useSWR('http://localhost:3000/api/conversation/recent', fetcher)
 
   if (error) return <div>failed to load</div>
   if (!data) return <div>loading...</div>
@@ -76,7 +74,7 @@ console.log(conversations.data)
     // </div>
     //     )
 <>
-    {conversations?.data.map((c:any) => 
+    {/* {conversations?.data.map((c:any) => 
     
     <div className="message">
         <div className="message__picture">
@@ -91,7 +89,7 @@ console.log(conversations.data)
     </div> 
         
     
-     )}
+     )} */}
     </>
         
     );

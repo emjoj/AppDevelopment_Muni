@@ -1,6 +1,4 @@
 export interface ConversationInterface {
-    conversation:{
-
     id: number,
     isActive: boolean,
     isPinned: boolean,
@@ -16,4 +14,3 @@ export interface ConversationInterface {
         delatedAt: string
       }]
     }
-}

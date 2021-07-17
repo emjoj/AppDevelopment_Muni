@@ -6,7 +6,7 @@ export const  messagesState = selector({
     get:({ get }) => {
         const conversations = get(conversationsState);
         const messages = [conversations.data.map((p)=>
-            p.conversation)]
+            p.messages)]
 
     return messages;        
     }
